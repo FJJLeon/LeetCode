@@ -3,3 +3,10 @@
 
 * Iterator
 迭代器 TODO
+
+* Reference
+https://stackoverflow.com/questions/15202978/compare-vectortiterator-with-vectortreverse-iterator
+https://blog.csdn.net/kjing/article/details/6936325
+https://blog.csdn.net/zhangpeterx/article/details/88775434
+VSCODE 为什么不报错
+https://www.cnblogs.com/xiaoxi666/p/9535084.html
