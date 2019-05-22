@@ -23,6 +23,13 @@ int Cn3(int n) {
         return n * (n-1) * (n-2) / 6;
 }
 
+int Cn2(int n) {
+    if (n < 2)
+        return 0;
+    else
+        return n * (n-1) / 2;
+}
+
 int main() {
     int n, d;
     cin >> n >> d;
@@ -38,11 +45,18 @@ int main() {
         while (k+1<n && place[k+1] - a <= d) {
             k++;
         }
+        /*
         int count = k - i + 1;
         int tmp = Cn3(count);
         res = (res + tmp) % 99997867;
 
         i = k-1 > i ? k-1 : i+1;
+        */
+        int count = k - i;
+        int tmp = Cn2(count);
+        res = (res + tmp) % 99997867;
+
+        i = i + 1;
     }
     
     cout << res;
