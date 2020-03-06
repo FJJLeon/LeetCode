@@ -32,5 +32,13 @@ int main() {
 
     iterator remove(iterator first, iterator last，val);
     */
+
+    /* 遍历输出 */
+    int len = v11.size();
+    for (int i=0; i<len; i++) {
+        cout << v11[i] << " ";
+    }
+    cout << endl;
+
     return 0;
 }
