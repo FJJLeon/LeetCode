@@ -35,6 +35,8 @@ public:
 /**
  * use bucket sorted str as key, then we can use unordered_map without impl own hashfunc
  * map: key - sorted str --> value - index in result anagrams
+ * 还有不少奇淫巧计都用在设置更NB的 key 上面了
+ * 比如有把 string 用质数对应累乘转换成 int 的操作，还有把 occurrence 数组转换成 string 的
  * 
  * Runtime: 84 ms, faster than 21.73%, O(NK), note: 如果用内置 sort 的话，O(T) = O(NKlogK), 然而在LC测得的 runtime 似乎不稳定（或者有问题）
  * Memory Usage: 15.6 MB, less than 100.00%, O(NK)
