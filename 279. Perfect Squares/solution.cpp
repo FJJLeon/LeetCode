@@ -8,7 +8,7 @@ using namespace std;
  * DP
  * dp[n] = min(dp[1] + dp[n-1], dp[4] + dp[n-4], ...)
  * 
- * Runtime: 104 ms, faster than 73.30%, O(N)
+ * Runtime: 104 ms, faster than 73.30%, O(N*sqrt(N))
  * Memory Usage: 9 MB, less than 90.38%, O(N)
 */
 class Solution11 {
@@ -41,7 +41,7 @@ public:
  * there are hundreds of testcase, many results have been calculated in early testcase
  * store the dp result for later testcase to reduce runtime
  * 
- * Runtime: 4 ms, faster than 97.47%, O(n)
+ * Runtime: 4 ms, faster than 97.47%, O(N*sqrt(N))
  * Memory Usage: 6.2 MB, less than 100.00%, O(N)
 */
 class Solution12 {
