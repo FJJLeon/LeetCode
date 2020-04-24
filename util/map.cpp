@@ -1,5 +1,6 @@
 #include<map>
 #include<iostream>
+#include<assert.h>
 
 using namespace std;
 
@@ -18,8 +19,22 @@ int main() {
         {"red", 1}, {"ice", 2}, {"cream", 3}
     };
 
+    /* 删除元素 */
+    // 删除指定 key 值
+    m3.erase("red");
+    assert(m3.find("red") == m3.end());
+    
+    // 删除迭代器
+    auto it = m3.find("ice");
+    assert(it != m3.end());
+    m3.erase(it);
+    assert(m3.find("ice") == m3.end());
 
+    // 删除所有元素
+    m3.erase(m3.begin(), m3.end());
+    assert(m3.size() == 0);
 
+    m3.insert({"red", 123});
     cout << m3["red"];
 
     return 0;
