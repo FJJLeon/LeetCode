@@ -26,3 +26,6 @@ Constraints:
 * `1 <= text1.length <= 1000`
 * `1 <= text2.length <= 1000`
 * The input strings consist of lowercase English characters only.
+
+## Refence
+![Longest Common Subsequence(including get the LCS)](https://www.cs.umd.edu/users/meesh/cmsc351/mount/lectures/lect25-longest-common-subseq.pdf)
