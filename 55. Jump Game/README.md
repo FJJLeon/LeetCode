@@ -17,3 +17,7 @@ Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum
              jump length is 0, which makes it impossible to reach the last index.
 ```
+
+## Reference
+[Jump Game solution](https://leetcode.com/problems/jump-game/solution/)
+Introduce from 1.**Backtracking** to 2. **Dynamic Programming Top-down** (use memo) 3. **Dynamic Programming Bottom-up** (eliminate recursion) and 4. **Greedy** (search left-most position)
