@@ -4,6 +4,7 @@
 using namespace std;
 
 /**
+ * greedy
  * how to get a smallest new number by removing only one digit?
  *  we need to remove a digit who is the first one (left to right) whose next digit is smaller than it, aka first peak
  *  for "1293847", it is 9, its next is 3 < 9 and previous digits are smaller too
