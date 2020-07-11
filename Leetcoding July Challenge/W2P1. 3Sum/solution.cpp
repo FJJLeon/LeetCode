@@ -4,7 +4,7 @@
 using namespace std;
 
 /**
- * sort first, fix one (value as f) and binary search 2Sum with target = -f
+ * sort first, fix one (value as f) and use two pointers like 2Sum with target = -f
  * 
  * Runtime: 92 ms, faster than 70.50%, O(N^2)
  * Memory Usage: 19.5 MB, less than 97.65%, O(1)
@@ -51,6 +51,9 @@ public:
 /**
  * simple optimization
  * we sort the nums at first, when we meet nums[i] > 0, all numbers after it > 0 -> impossible , early stop
+ * 
+ * Runtime: 68 ms, faster than 95.33%, O(N^2)
+ * Memory Usage: 19.9 MB, less than 60.60%
 */
 class Solution12 {
 public:
