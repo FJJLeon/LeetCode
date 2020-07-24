@@ -6,13 +6,13 @@ using namespace std;
  * bit manipulation
  * 
  * when only one number appears only once, we can find it just by xor all numbers
- * now there are two such number marked as x, y
+ * now there are two such number, marked as x, y
  * split all numbers into two group, xor all numbers in a group to find one
- * but how
+ * but how to split
  * we still utilize xor, xor all number -> get [twoXor] as xor of x and y
  * get a mask who only contains only one '1' and the bit exist in [twoXor]
  *      for the two special number, x & mask != y & mask
- *      for the other number, two same number must be splited into the same group, after xor -> 0
+ *      for the other number, two same number must be split into the same group, after xor -> 0
  * 
  * LSB
  * Runtime: 16 ms, faster than 93.15%, O(2N) = O(N)
