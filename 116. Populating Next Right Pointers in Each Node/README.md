@@ -34,7 +34,7 @@ public:
         // <节点，level>
         queue<pair<Node*, int>> q;
         q.push({root, 0});
-        while (!q.empty()) {、
+        while (!q.empty()) {
             // 当前节点，当前层级
             auto [cur, curL] = q.front(); q.pop();
             if (!cur)
