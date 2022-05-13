@@ -4,7 +4,7 @@
 
 题面：https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 
-二叉树，每个节点添加一个 next 指针，使得每个指针指向当前层右侧的节点。
+二叉树，每个节点添加一个 next 指针，使得每个指针指向当前层右侧的节点。[116](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/) 题的扩展，二叉树可以不完全了。
 
 ``` 
 class Node {
