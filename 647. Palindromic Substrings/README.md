@@ -127,13 +127,16 @@ public:
 
 第一步，统一了奇偶长度子串，使得后续操作一致。做法是在原串**S**的每两个字符中间插入一个新字符，这样形成新串**T**，T的每个字符正好对应了原串 **2|S|-1** 个中心。
 
-第二步，在计算过程中记录每个中心能扩展得到的最长回文串半径，利用回文串的对称性进一步帮助后续计算。
+第二步，在计算过程中记录每个中心 i 能扩展得到的最长回文串半径 **radius[i]**，利用回文串的对称性进一步帮助后续计算。
 
-具体来说，我们已知一个已计算完成的结果，索引位置 **center** 处的最长回文串半径为 **Rc**，即 **T[center - Rc, center + Rc]** 是一个回文串。
+具体来说，我们已知一个已计算完成的结果，索引位置 **center** 处的最长回文串半径为 **radius[center]**（后记为Rc），即 **T[C - Rc, C + Rc]** 是一个回文串，记 right = C + Rc。
 
-现在要计算索引 **i, (i>center)** 处的最长回文半径，若 i < Center + Rc，可以得到一个关于 Center 的对称点 **mirror = center - (i - center)**。由于 mirror 和 i 关于 Center 中心对称，且都在回文串中。因此，以 i 为中心和以 mirror 为中心的最长回文串半径相等。但是这要求该半径不超过 Center + Rc，超过部分仍需要使用中心扩展进行计算。
+现在要计算索引 **i, (i>center)** 处的最长回文半径，
 
-那么现在的问题是如何选取这个 **Center**，我们需要尽可能复用之前的结果，因此，我们在计算过程中不断维护更新右边界即(center + Rc)最远的那个。
+* 若 i < right，可以得到一个 i 关于 center 的对称点 **mirror = center - (i - center)**， mirror 已经计算过，此处最长回文串半径为 **radius[mirror]**（后记为 Rm）。由于 mirror 和 i 关于 Center 中心对称，且都在回文串中。因此，以 i 为中心和以 mirror 为中心的最长回文串半径可以相等。但是这要求该半径下，以 i 为中心的回文串右边界不超过 right，即 **i + Rm <= center + Rc = right**，超过部分不能利用对称性保证回文，仍需要使用中心扩展进行计算。
+* 若 i >= right，则需要中心扩展计算。
+
+另一个问题是如何选取这个 **center**，我们需要尽可能复用之前的结果，因此，我们在计算过程中不断维护更新右边界即 right 最靠右的那个 center 中心。
 
 ``` c++
 TC=O(N)，right 只会线性更新到 N，便可复用计算所有半径
@@ -143,7 +146,7 @@ class Solution {
 public:
     int countSubstrings(string s) {
         // aaa -> ^#a#a#a#$
-        // ^ 和 $ 的开头结尾有利于中心扩展时的消除边界判断
+        // ^ 和 $ 开头结尾有利于中心扩展时的消除边界判断
         string t = "^#";
         for (char c : s)
             t.append(1, c).append(1, '#');
@@ -156,12 +159,12 @@ public:
         // 维护右边界最远的中心扩展结果，center 为该子回文串中心，right 为右边界
         int center = 0, right = 0;
         for (int i = 1; i < n - 1; i++) {
-            // 得到中心对称点
+            // 得到关于 center的中心对称点
             int mirror = 2 * center - i;
             // i 的计算可复用前面的结果，为 right-i 和 radius[mirror] 中较小的那个
             if (i < right)
                 radius[i] = min(right - i, radius[mirror]);
-            // 继续中心扩展，利用了T构建时的 ^ 和 $
+            // 继续中心扩展，利用了T构建时的 ^ 和 $，无需边界判断
             while (t[i - radius[i] - 1] == t[i + radius[i] + 1])
                 radius[i]++;
             // 有边界有更远的，更新之
